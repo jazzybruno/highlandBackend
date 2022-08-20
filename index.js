@@ -1,6 +1,6 @@
 const express = require('express');
 const { connection } = require('./utils/mongodb');
-const PORT = process.env | 5000;
+const PORT = process.env.PORT || 3000
 const app = express();
 const Middlewares = require('./utils/middlewares');
 require('dotenv').config()

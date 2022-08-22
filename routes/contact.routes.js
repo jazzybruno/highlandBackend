@@ -6,7 +6,7 @@ const {DeleteContact} = require('../controllers/contact/contact')
 const {GetContactById} = require('../controllers/contact/contact')
 const auth = require('../middlewares/auth')
 
-ContactRouter.post('/' , auth , PostContact);
+ContactRouter.post('/' , PostContact);
 ContactRouter.get('/' , auth , GetContacts);
 ContactRouter.delete('/:id' , auth , DeleteContact);
 ContactRouter.get('/:id' , auth , GetContactById);

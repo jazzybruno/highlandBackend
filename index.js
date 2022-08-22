@@ -8,7 +8,6 @@ const cors = require('cors');
 const helmet = require('helmet')
 const compression = require('compression')
 
-
 //the cors aprt start
 app.use(cors())
 //the cors aprt end
@@ -23,12 +22,9 @@ Middlewares(app)
 //the middlewares end
 
 
-
 //The database connection start
 connection()
 //The database connection end
-
-
 
 
 app.listen(PORT , ()=> {

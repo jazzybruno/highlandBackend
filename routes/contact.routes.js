@@ -12,3 +12,4 @@ ContactRouter.delete('/:id' , auth , DeleteContact);
 ContactRouter.get('/:id' , auth , GetContactById);
 
 module.exports = ContactRouter;
+

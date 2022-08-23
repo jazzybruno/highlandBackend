@@ -9,7 +9,7 @@ const upload = require('../middlewares/multer');
 const auth = require('../middlewares/auth');
 
 PostRouter.post('/' , auth , upload.single('image') , NewPost);
-PostRouter.get('/' , auth , GetPosts);
+PostRouter.get('/' , GetPosts);
 PostRouter.delete('/:id', auth , DeletePost);
 PostRouter.get('/:id' , auth , GetPostById);
 PostRouter.put('/:id', auth ,  upload.single('image') ,  UpdatePost);

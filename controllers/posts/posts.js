@@ -2,16 +2,31 @@ const express = require('express');
 const {Post} = require('../../models/post');
 const Joi = require('joi');
 const fs = require('fs');
+const  cloudinary  =  require('../../middlewares/cludinary');
 
 const NewPost = async (req , res)=>{
-    const postData = {
-        title: req.body.title,
-        content: req.body.content,
-        photo: req.file
-    }
+
+    const uploader = async (path) => await cloudinary.uploads(path , 'images');
 
     console.log(req.file);
 
+    let url
+    const file = req.file;
+    const {path} = file;
+    const newPath = await uploader(path);
+    url = newPath;
+
+   
+
+
+    
+    const postData = {
+        title: req.body.title,
+        content: req.body.content,
+        photo: url.url
+    }
+
+    
     const {error} = validatePost(postData);
     if(error){
         return res.status(400).json({
@@ -128,7 +143,7 @@ const validatePost = (post) => {
     const Shema = Joi.object({
         title: Joi.string().min(3).required(),
         content: Joi.string().min(3).required(),
-        photo: Joi.object().min(3)
+        photo: Joi.required()
      } )
     return Shema.validate(post);
 }

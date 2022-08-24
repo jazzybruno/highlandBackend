@@ -7,6 +7,7 @@ const {GetPostById} = require('../controllers/posts/posts');
 const {UpdatePost} = require('../controllers/posts/posts');
 const upload = require('../middlewares/multer');
 const auth = require('../middlewares/auth');
+const cloudinary = require('cloudinary');
 
 PostRouter.post('/' , auth , upload.single('image') , NewPost);
 PostRouter.get('/' , GetPosts);

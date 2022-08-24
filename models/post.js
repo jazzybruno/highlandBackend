@@ -14,7 +14,7 @@ const postSchema = new Schema({
     },
 
     photo: {
-        type: Object,
+        type: String,
         required: true
     }
 })

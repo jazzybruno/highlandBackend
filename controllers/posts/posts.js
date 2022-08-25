@@ -12,42 +12,49 @@ const NewPost = async (req , res)=>{
 
     let url
     const file = req.file;
-    const {path} = file;
-    const newPath = await uploader(path);
-    url = newPath;
-
-   
-
-
-    
-    const postData = {
-        title: req.body.title,
-        content: req.body.content,
-        photo: url.url
-    }
-
-    
-    const {error} = validatePost(postData);
-    if(error){
-        return res.status(400).json({
-            message: error.details[0].message
+    if(file === undefined){
+        res.status(400).json({
+            message : 'No file uploaded'
         })
-    }
-
-    const post = new Post(postData);
-    try {
-        await post.save();
-        res.status(200).json({
-            message: 'Successfully created post'
-        });
-    } catch (error) {
+    }else{
+        const {path} = file;
+        const newPath = await uploader(path);
+        url = newPath;
+    
+       
+    
+    
+        
+        const postData = {
+            title: req.body.title,
+            content: req.body.content,
+            photo: url.url
+        }
+    
+        
+        const {error} = validatePost(postData);
         if(error){
-            res.status(500).json({ 
-                message: 'Error while creating post',
-                error: error.message
+            return res.status(400).json({
+                message: error.details[0].message
             })
         }
+    
+        const post = new Post(postData);
+        try {
+            await post.save();
+            res.status(200).json({
+                message: 'Successfully created post'
+            });
+        } catch (error) {
+            if(error){
+                res.status(500).json({ 
+                    message: 'Error while creating post',
+                    error: error.message
+                })
+            }
+        }
     }
+
 
 }
 

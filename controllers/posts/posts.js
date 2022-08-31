@@ -73,15 +73,6 @@ const GetPosts = async (req , res) => {
 const DeletePost = async (req , res) =>{
     try {
         const toRemove = await Post.findById(req.params.id);
-        const destination =  toRemove.photo.path
-        fs.unlink(destination , (err) => {
-            if(err){
-                console.log(err);
-            }
-            else{
-                console.log('File deleted successfully');
-            }
-        })
         const post = await Post.findByIdAndDelete(req.params.id);
         res.status(200).json({
             message: 'Post deleted successfully'

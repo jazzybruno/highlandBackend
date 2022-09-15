@@ -4,7 +4,7 @@ const  cloudinary  =  require('../../middlewares/cludinary');
 
 const newAdmission = async (req , res)=>{
 
-    const uploader = async (path) => await cloudinary.uploads(path , 'admissions');
+    const uploader = async (path) => await cloudinary.uploads(path , 'images');
 
     let url
     const file = req.file;

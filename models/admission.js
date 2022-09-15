@@ -19,7 +19,7 @@ const admissionSchema = new Schema({
         required: true
     },
     studentPhoto:{
-      type: Object,
+       type: String,
         required: true
     },
     province:{

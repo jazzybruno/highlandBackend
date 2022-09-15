@@ -1,9 +1,25 @@
 const express = require('express');
 const {Admission} = require('../../models/admission')
+const  cloudinary  =  require('../../middlewares/cludinary');
 
 const newAdmission = async (req , res)=>{
+
+    const uploader = async (path) => await cloudinary.uploads(path , 'admissions');
+
+    let url
+    const file = req.file;
+    if(file === undefined){
+        res.status(400).json({
+            message : 'No file uploaded'
+        })
+    }else{
+        const {path} = file;
+        const newPath = await uploader(path);
+        url = newPath;
+    }
+
     const data = {
-       studentPhoto: req.file,
+       studentPhoto: url.url,
        ...req.body
     }
 

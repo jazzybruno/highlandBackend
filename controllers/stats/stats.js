@@ -77,5 +77,16 @@ const getStatistics = async (req , res) => {
     }
 }
 
+const validateStatistic = (data)=> {
+    const schema = Joi.object({
+        teachers : Joi.number().required(),
+        graduates : Joi.number().required(),
+        buildings : Joi.number().required(),
+        OfficeLocation : Joi.number().required(),
+        students : Joi.number().required()
+    })
+    return schema.validate(data)
+}
+
 module.exports.updateStatistic = updateStatistic
 module.exports.getStatistics = getStatistics

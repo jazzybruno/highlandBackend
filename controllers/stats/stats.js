@@ -78,3 +78,4 @@ const getStatistics = async (req , res) => {
 }
 
 module.exports.updateStatistic = updateStatistic
+module.exports.getStatistics = getStatistics

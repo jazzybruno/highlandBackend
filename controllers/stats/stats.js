@@ -56,3 +56,25 @@ const updateStatistic = async (req , res)=>{
     }
 }
 
+const getStatistics = async (req , res) => {
+    try {
+        const statistics = await Stats.find()
+        if(!statistics){
+            return res.status(200).json({
+                message : "There are no statistics"
+            })
+
+            res.status(200).json({
+                message: "Successfully Retrieved Statistics",
+                statistics: statistics
+            })
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error while creating contact',
+            error: error.message
+        })
+    }
+}
+
+module.exports.updateStatistic = updateStatistic

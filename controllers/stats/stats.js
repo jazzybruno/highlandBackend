@@ -61,7 +61,8 @@ const getStatistics = async (req , res) => {
         const statistics = await Stats.find()
         if(statistics.length === 0){
             return res.status(200).json({
-                message : "There are no statistics"
+                message : "There are no statistics",
+                statistics: []
             }) 
           }
 

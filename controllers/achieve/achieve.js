@@ -8,7 +8,8 @@ const getAchievements = async(req , res) => {
 
         if(achievements.length === 0){
           return  res.status(200).json({
-            message : "There are no achievements currently"
+            message : "There are no achievements currently",
+            statistics: []
           })
         }else{
             return res.status(200).json({
@@ -31,7 +32,8 @@ const getAchievementById = async(req , res) => {
 
        if(!achievement){
          return  res.status(200).json({
-           message : `There are no achievement with this id : ${id} `
+           message : `There are no achievement with this id : ${id} `,
+           data: {}
          })
        }else{
            return res.status(200).json({

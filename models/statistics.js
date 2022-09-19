@@ -19,7 +19,7 @@ const statsSchema = new Schema({
         type: Number,
         required: true
     },
-    Students:{
+    students:{
         type: Number,
         required: true
     }

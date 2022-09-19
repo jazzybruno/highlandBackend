@@ -24,7 +24,7 @@ const updateStatistic = async (req , res)=>{
         const statistic = await Stats.findById(id)
         if(!statistic){
             return res.status(200).json({
-                message: "No Achievmenst with this id was found"
+                message: "No stats with this id was found"
             })
         }
 
@@ -50,7 +50,7 @@ const updateStatistic = async (req , res)=>{
 
     } catch (error) {
         res.status(500).json({
-            message: 'Error while creating contact',
+            message: 'Error while getting data',
             error: error.message
         })
     }
@@ -59,19 +59,20 @@ const updateStatistic = async (req , res)=>{
 const getStatistics = async (req , res) => {
     try {
         const statistics = await Stats.find()
-        if(!statistics){
+        if(statistics.length === 0){
             return res.status(200).json({
                 message : "There are no statistics"
-            })
+            }) 
+          }
 
-            res.status(200).json({
-                message: "Successfully Retrieved Statistics",
-                statistics: statistics
-            })
-        }
+           res.status(200).json({
+              message: "Successfully Retrieved Statistics",
+             statistics: statistics
+          })
+
     } catch (error) {
         res.status(500).json({
-            message: 'Error while creating contact',
+            message: 'Error while getting data',
             error: error.message
         })
     }

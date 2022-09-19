@@ -1,6 +1,6 @@
 const express = require('express')
 const { Achievement } = require('../../models/achievement')
-const Joi = require()
+const Joi = require("joi")
 
 const getAchievements = async(req , res) => {
      try {

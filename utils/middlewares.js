@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const  ContactRouter = require('../routes/contact.routes')
 const PostRouter = require('../routes/post.routes')
 const AdmissionRouter = require('../routes/admission.routes')
+const AchievementRouter = require("../routes/achievement.routes")
 const UserRoute = require('../routes/user.routes')
 const { Swaggiffy } = require('swaggiffy'); // Using require
 
@@ -14,6 +15,7 @@ const Middlewares = (app)=>{
     app.use('/post' , PostRouter)
     app.use('/admission' , AdmissionRouter)
     app.use('/user' , UserRoute)
+    app.use('/achieve' , AchievementRouter)
 
       //the swaggiffy start
       new Swaggiffy().setupExpress(app).swaggiffy();

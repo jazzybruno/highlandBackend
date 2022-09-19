@@ -160,3 +160,9 @@ function validateAchievement (achievement) {
     })
     return schema.validate(achievement)
 }
+
+module.exports.getAchievements = getAchievements
+module.exports.postAchievement = postAchievement
+module.exports.getAchievementById = getAchievementById
+module.exports.updateAchievement = updateAchievement
+module.exports.deleteAchievement = deleteAchievement

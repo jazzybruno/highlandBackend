@@ -6,11 +6,11 @@ const { Stats } = require("../../models/statistics")
 const updateStatistic = async (req , res)=>{
     const id = req.params.id
     const data = {
-        teachers : req.body.teachers,
-        graduates : req.body.graduates,
-        buildings : req.body.buildings,
-        OfficeLocation : req.body.OfficeLocation,
-        students : req.body.students
+        teachers : req.query.teachers,
+        graduates : req.query.graduates,
+        buildings : req.query.buildings,
+        OfficeLocation : req.query.OfficeLocation,
+        students : req.query.students
     }
 
     const {error} = validateStatistic(data)

@@ -157,8 +157,9 @@ const deleteAchievement = async (req , res)=> {
 
 function validateAchievement (achievement) {
     const schema = Joi.object({
-        title: Joi.string().min(10).required(),
         desc: Joi.string().min(15).required(),
+        title: Joi.string().min(10).required(),
+        
     })
     return schema.validate(achievement)
 }

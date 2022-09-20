@@ -55,13 +55,13 @@ const postAchievement = async (req , res)=> {
         title : req.body.title,
         desc: req.body.desc
     }
-    // const {error} = validateAchievement(data)
+    const {error} = validateAchievement(data)
 
-    // if(error){
-    //     return res.status(400).json({
-    //         message: error.details[0].message
-    //     })
-    // }
+    if(error){
+        return res.status(400).json({
+            message: error.details[0].message
+        })
+    }
 
     const achievement = new Achievement(data)
 
@@ -155,14 +155,14 @@ const deleteAchievement = async (req , res)=> {
 
 
 
-// function validateAchievement (achievement) {
-//     const schema = Joi.object({
-//         desc: Joi.string().min(15).required(),
-//         title: Joi.string().min(10).required()
+function validateAchievement (achievement) {
+    const schema = Joi.object({
+        desc: Joi.string().min(15).required(),
+        title: Joi.string().min(10).required()
         
-//     })
-//     return schema.validate(achievement)
-// }
+    })
+    return schema.validate(achievement)
+}
 
 module.exports.getAchievements = getAchievements
 module.exports.postAchievement = postAchievement

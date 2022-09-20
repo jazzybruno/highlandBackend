@@ -2,7 +2,7 @@ const express = require('express');
 const {Contact} = require('../../models/contact');
 const Joi = require('joi')
 
-const PostContact = async (req , res) =>{
+const PostContact = async(req , res) =>{
     const contactData = {
         name : req.body.name,
         phone: req.body.phone,

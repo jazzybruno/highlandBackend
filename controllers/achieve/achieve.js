@@ -49,12 +49,12 @@ const getAchievementById = async(req , res) => {
     }
 }
 
-const postAchievement = async (req , res)=> {
+const postAchievement = async(req , res)=> {
 
     const achieve = {
-        title : req.body.title,
-        desc: req.body.desc
-    }
+        title : req.query.title,
+        desc: req.query.desc
+    }   
 
     if(achieve.desc === undefined || achieve.title === undefined){
         return res.status(400).json({
@@ -62,9 +62,8 @@ const postAchievement = async (req , res)=> {
         })
     }
 
-    console.log(achieve);
 
-    const {error} = validateAchievement(req.body)
+    const {error} = validateAchievement(req.query)
 
     if(error){
         return res.status(400).json({
@@ -166,8 +165,8 @@ const deleteAchievement = async (req , res)=> {
 
 function validateAchievement (achievement) {
     const schema = Joi.object({
-        desc: Joi.string().min(15).required(),
-        title: Joi.string().min(10).required()
+        desc: Joi.string().required(),
+        title: Joi.string().required()
         
     })
     return schema.validate(achievement)

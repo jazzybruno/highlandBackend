@@ -74,7 +74,7 @@ const postAchievement = async (req , res)=> {
         
     } catch (error) {
         res.status(500).json({
-            message: 'Error while creating contact',
+            message: 'Error while creating achievement',
             error: error.message
         })
     }
@@ -158,7 +158,7 @@ const deleteAchievement = async (req , res)=> {
 function validateAchievement (achievement) {
     const schema = Joi.object({
         desc: Joi.string().min(15).required(),
-        title: Joi.string().min(10).required(),
+        title: Joi.string().min(10).required()
         
     })
     return schema.validate(achievement)

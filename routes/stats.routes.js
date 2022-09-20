@@ -1,8 +1,9 @@
 const express = require("express")
 const { getStatistics , updateStatistic} = require("../controllers/stats/stats")
 const StatsRouter = express.Router()
+const auth = require('../middlewares/auth');
 
-StatsRouter.put("/:id" , updateStatistic )
-StatsRouter.get("/" , getStatistics )
+StatsRouter.put("/:id" , auth , updateStatistic )
+StatsRouter.get("/" , auth , getStatistics )
 
 module.exports = StatsRouter

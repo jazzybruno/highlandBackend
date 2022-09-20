@@ -51,11 +51,20 @@ const getAchievementById = async(req , res) => {
 
 const postAchievement = async (req , res)=> {
 
-    const data = {
+    const achieve = {
         title : req.body.title,
         desc: req.body.desc
     }
-    const {error} = validateAchievement(data)
+
+    if(achieve.desc === undefined || achieve.title === undefined){
+        return res.status(400).json({
+            message: "Please fill all the fields"
+        })
+    }
+
+    console.log(achieve);
+
+    const {error} = validateAchievement(req.body)
 
     if(error){
         return res.status(400).json({
@@ -63,7 +72,7 @@ const postAchievement = async (req , res)=> {
         })
     }
 
-    const achievement = new Achievement(data)
+    const achievement = new Achievement(achieve)
 
     try {
 

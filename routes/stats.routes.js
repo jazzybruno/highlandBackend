@@ -4,6 +4,6 @@ const StatsRouter = express.Router()
 const auth = require('../middlewares/auth');
 
 StatsRouter.put("/:id" , auth , updateStatistic )
-StatsRouter.get("/" , auth , getStatistics )
+StatsRouter.get("/" , getStatistics )
 
 module.exports = StatsRouter
